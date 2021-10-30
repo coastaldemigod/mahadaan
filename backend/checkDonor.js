@@ -12,6 +12,7 @@ const auth_token="Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZX
 let countries_url="https://www.universal-tutorial.com/api/countries/";
 let states_url="https://www.universal-tutorial.com/api/states/";
 let city_url="https://www.universal-tutorial.com/api/cities/"
+
 const param={
     headers:{
         "content-type":"application/json",
@@ -68,7 +69,7 @@ function checkDonorAPI(req, res){
     // res.writeHead(200, { "content-type": "application/json" });
     // res.end(resulJSON);
     //logic
-    let resulJSON = "{'STATUS':'ok', 'MESSAGE': 'working/checkDonor'}"
+    let resulJSON = '{"STATUS":"ok", "MESSAGE": "working/checkDonor"}'
 
     res.writeHead(200, { "content-type": "application/json" });
     res.end(resulJSON);
