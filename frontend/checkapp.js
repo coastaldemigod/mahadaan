@@ -86,7 +86,7 @@ async function postData(url,data){
 
 function showDonor()
 {
-    const blood=document.getElementById("blood").value;
+    const blood=encodeURIComponent(document.getElementById("blood").value);
     const country=document.getElementById("country").value;
     const state=document.getElementById("state").value;
     const city=document.getElementById("city").value;
@@ -96,7 +96,11 @@ function showDonor()
         "state":state,
         "city":city
     };
-    let url=`http://localhost:5000/checkDonor?country=${country}&state=${state}&city=${city}`;
-    console.log(url);
-    fetch(url).then(e=>e.json()).then(console.table);
+    let url=encodeURI(`http://localhost:5000/checkDonor?blood=${blood}&country=${country}&state=${state}&city=${city}`);
+    // console.log(url);
+    fetch(url)
+    .then(e=>e.json())
+    .then(dt=>{
+        alert(`There is/are ${dt.DATA} donors available who can donate blood to you.`);
+    });
 }
