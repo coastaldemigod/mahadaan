@@ -13,7 +13,7 @@ function apiHandler(req, res) {
     const apiURL = req.url;
 
     if      (apiURL.startsWith('/checkDonor')) checkDonorAPI(req, res)
-    else if (apiURL.startsWith('/login')) checkDonorAPI(req, res)
+    else if (apiURL.startsWith('/login')) loginAPI(req, res)
     else res.end('{STATUS: "failed", MESSAGE: "Bad Request"}')
 
 }
