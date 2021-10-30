@@ -3,7 +3,8 @@ const crypt = require('crypto');
 let DATABASE = {
     // phoneNumber : ApiToken
     1234:"somerandomkey",
-    2345:"somerandomkey"
+    2345:"somerandomkey",
+    4567:"0787d6cc1412c83ea12f7f97adcc7338"
 }
 let DATABASE2 = {
     // phonenumber : otp

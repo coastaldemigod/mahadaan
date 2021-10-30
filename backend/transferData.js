@@ -28,25 +28,26 @@ function transferData(req,res){
     {
         if(what=='donateStatus')
         {
-            STATUS="OK";
+            console.log("sent");
+            STATUS="ok";
             MESSAGE="donate status sent";
             DATA=getDonateStatus(apiKeyVerify(key)).toString();
         }
         else if(what=='requestStatus')
         {
-            STATUS="OK";
+            STATUS="ok";
             MESSAGE="request status sent";
             DATA=getRequestStatus(apiKeyVerify(key)).toString();
         }
         else if(what=='donateDetail')
         {
-            STATUS="OK";
+            STATUS="ok";
             MESSAGE="donate details sent";
             DATA=JSON.stringify(getDonateDetail(apiKeyVerify(key)));
         }
         else if(what=='RequestDetail')
         {
-            STATUS="OK";
+            STATUS="ok";
             MESSAGE="request details sent";
             DATA=JSON.stringify(getRequestDetail(apiKeyVerify(key)));
         }
@@ -65,7 +66,7 @@ function transferData(req,res){
             // console.log(data.whatData);
             let phn=apiKeyVerify(key);
             setDonateDetail(phn,data.whatData);
-            STATUS="OK";
+            STATUS="ok";
             MESSAGE="donate details saved";
             DATA=data.whatData;
         }
@@ -74,7 +75,7 @@ function transferData(req,res){
             let data=getParams(url,['whatData']);
             let phn=apiKeyVerify(key);
             setRequestDetail(phn,data.whatData);
-            STATUS="OK";
+            STATUS="ok";
             MESSAGE="request details saved";
             DATA=data.whatData;
         }
@@ -92,7 +93,7 @@ function transferData(req,res){
         DATA="";
     }
 
-    let resulJSON = `{"STATUS" : ${STATUS}, "MESSAGE": ${MESSAGE}, "DATA" : ${DATA} }`
+    let resulJSON = `{"STATUS" : "${STATUS}", "MESSAGE": "${MESSAGE}", "DATA" : "${DATA}" }`
     res.writeHead(200, { "content-type": "application/json" });
     res.end(resulJSON);
 }

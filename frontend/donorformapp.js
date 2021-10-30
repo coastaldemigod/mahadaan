@@ -1,8 +1,8 @@
 let countries_url="https://www.universal-tutorial.com/api/countries/";
 let states_url="https://www.universal-tutorial.com/api/states/";
 let city_url="https://www.universal-tutorial.com/api/cities/"
-const auth_token="Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfZW1haWwiOiJjb2FzdGFsZGVtaWdvZEBnbWFpbC5jb20iLCJhcGlfdG9rZW4iOiJxYjJfbHVxTWo3YWgxMmNuQkFodV9Gb2FTTmFTSFVkY09sX043bUR4bTVwUHRyYnRMZC1kLXpfNklmeklZT1ZpWDlVIn0sImV4cCI6MTYzNTYyMTIwMX0.MUoXUzwaNVBt5iJNbySf_qv4Li8r_AtZRREyMtkI-A8";
-
+// the auth_token gets changed every 24 hours, and must be changed.
+const auth_token="Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfZW1haWwiOiJjb2FzdGFsZGVtaWdvZEBnbWFpbC5jb20iLCJhcGlfdG9rZW4iOiJxYjJfbHVxTWo3YWgxMmNuQkFodV9Gb2FTTmFTSFVkY09sX043bUR4bTVwUHRyYnRMZC1kLXpfNklmeklZT1ZpWDlVIn0sImV4cCI6MTYzNTcxNDI0MH0.YeRUWu-jtq2SvezIzsBRwumehe5Ff48g5EfJNPCab0w";
 const param2={
     headers:{
         "content-type":"application/json",
