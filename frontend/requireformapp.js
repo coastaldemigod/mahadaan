@@ -72,7 +72,7 @@ setCountry();
 
 const emailreg= /^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/;
 const phonereg=/^\d{10}$/;
-const agereg = /^\d{2}$/;
+const agereg = /^\d{2}$/; // To be corrected
 
 const keys = document.querySelectorAll("input");
 console.log(keys);

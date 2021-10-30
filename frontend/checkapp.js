@@ -69,3 +69,36 @@ async function setCity(){
 }
 
 setCountry();
+
+async function postData(url,data){
+    const response = await fetch(url,{
+    method:"POST",
+    mode:"no-cors",
+    headers:{
+        "content-type":"application/json",
+        "Access-Control-Allow-Origin" : "*", 
+        "Access-Control-Allow-Credentials" : true
+    },
+    body:JSON.stringify(data)
+    });
+    return response.json();
+}
+
+function showDonor()
+{
+    const blood=document.getElementById("blood").value;
+    const country=document.getElementById("country").value;
+    const state=document.getElementById("state").value;
+    const city=document.getElementById("city").value;
+    const data={
+        "blood":blood,
+        "country":country,
+        "state":state,
+        "city":city
+    };
+    let url=`http://localhost:5000/checkDonor?blood=${blood}&country=${country}&state=${state}&city=${city}`;
+    console.log(url);
+    fetch(url,{
+        mode:"no-cors"
+    }).then(e=>e.json());
+}
