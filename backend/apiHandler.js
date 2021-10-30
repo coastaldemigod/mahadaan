@@ -10,9 +10,13 @@ const { loginAPI } = require('./login');
 */
 function apiHandler(req, res) {
 
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET');
+    res.setHeader('Access-Control-Max-Age', 2592000); // 30 days
+
     const apiURL = req.url;
 
-    if      (apiURL.startsWith('/checkDonor')) checkDonorAPI(req, res)
+    if (apiURL.startsWith('/checkDonor')) checkDonorAPI(req, res)
     else if (apiURL.startsWith('/login')) loginAPI(req, res)
     else res.end('{STATUS: "failed", MESSAGE: "Bad Request"}')
 

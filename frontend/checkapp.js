@@ -96,9 +96,7 @@ function showDonor()
         "state":state,
         "city":city
     };
-    let url=`http://localhost:5000/checkDonor?blood=${blood}&country=${country}&state=${state}&city=${city}`;
+    let url=`http://localhost:5000/checkDonor?country=${country}&state=${state}&city=${city}`;
     console.log(url);
-    fetch(url,{
-        mode:"no-cors"
-    }).then(e=>e.json());
+    fetch(url).then(e=>e.json()).then(console.table);
 }
