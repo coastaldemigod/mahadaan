@@ -1,4 +1,7 @@
 const { IncomingMessage, ServerResponse } = require('http');
+const { checkDonorAPI } = require('./checkDonor');
+const { loginAPI } = require('./login');
+
 
 /**
  * @param {IncomingMessage} req
@@ -6,10 +9,13 @@ const { IncomingMessage, ServerResponse } = require('http');
  * 
 */
 function apiHandler(req, res) {
-    if(req.url=="/")
-    res.end('Server for blood Donation');
-    else
-    res.end("different output");
+
+    const apiURL = req.url;
+
+    if      (apiURL.startsWith('/checkDonor')) checkDonorAPI(req, res)
+    else if (apiURL.startsWith('/login')) checkDonorAPI(req, res)
+    else res.end('{STATUS: "ok", MESSAGE: "Bad Request"}')
+
 }
 
 module.exports = { apiHandler }
