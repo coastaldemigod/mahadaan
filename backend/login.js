@@ -12,11 +12,12 @@ const { sanitizePhone } = require('./sanitize');
 function loginAPI(req, res) {
 
     // sanitize params 
-    let phoneNum = sanitizePhone(req.url, 'phonenumber')['phonenumber']
+    let phoneNum = getParams(req.url, ['phonenumber'])
+    console.log(phoneNum)
 
     // logic
 
-    let resulJSON = "{STATUS:'ok', MESSAGE: 'working/login'}"
+    let resulJSON = '{"STATUS":"ok", "MESSAGE": "working/login"}'
 
     res.writeHead(200, { "content-type": "application/json" });
     res.end(resulJSON);
