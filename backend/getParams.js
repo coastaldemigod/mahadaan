@@ -1,4 +1,3 @@
-
 /**
  * To Extract params from a URL 
  * url = string

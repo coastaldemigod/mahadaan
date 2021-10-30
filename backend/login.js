@@ -1,5 +1,7 @@
 const { IncomingMessage, ServerResponse } = require('http');
-
+const { getParams } = require('./getParams');
+const { isValidPhone } = require('./database');
+const { sanitizePhone } = require('./sanitize');
 
 // login?phonenumber=99898989898
 /**
@@ -10,6 +12,7 @@ const { IncomingMessage, ServerResponse } = require('http');
 function loginAPI(req, res) {
 
     // sanitize params 
+    let phoneNum = sanitizePhone(req.url, 'phonenumber')['phonenumber']
 
     // logic
 
@@ -17,7 +20,7 @@ function loginAPI(req, res) {
 
     res.writeHead(200, { "content-type": "application/json" });
     res.end(resulJSON);
-
+    
 }
 
 module.exports = { loginAPI }
