@@ -3,15 +3,15 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Donor Form</title>
+        <title>Requirement Form</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="donorformstyle.css">
+        <link rel="stylesheet" href="requireformstyle.css">
     </head>
     <body>
         
         <div class="heading">
-            Enter your details for blood donation
+            Enter details of patient for blood requirement
         </div>
         
         <div class="container">
@@ -26,7 +26,7 @@
                 </div>
                 <div class="row">
                     <div class="col-25">
-                        <label>Age <span class="sidenote">( Should be between 18 and 65 )</span></label>
+                        <label>Age</label>
                     </div>
                     <div class="col-75">
                         <input type="text" name="age" placeholder="age">
@@ -79,12 +79,21 @@
                 </div>
                 <div class="row">
                     <div class="col-25">
+                        <label>Cause of Requirement</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="text" name="cause" placeholder="e.g. dengue/malaria/trauma/cancer etc." size="40">
+                    </div>
+                </div>
+                <!-- <div class="row"> -->
+                    <!-- <div class="col-25">
                         <label>House Number/locality</label>
                     </div>
                     <div class="col-75">
                         <input type="text" name="address" placeholder="12-A">
-                    </div>
-                </div>
+                    </div> -->
+                    <!-- Where is blood required ? -->
+                <!-- </div> -->
                 <div class="row">
                     <div class="col-25">
                         <label>Country</label>
@@ -103,18 +112,18 @@
                 </div>
                 <div class="row">
                     <div class="col-25">
-                        <label>City</label>
+                        <label>City <span class="sidenote">(where the blood is required)</span></label>
                     </div>
                     <div class="col-75">
                         <select id="city" name="city"></select>
                     </div>
                 </div>
                 <div class="row">
-                    <button>Save</button>
+                    <button>Submit a request</button>
                 </div>
 
             </form>
         </div>
-        <script src="donorformapp.js" async defer></script>
+        <script src="requireformapp.js" async defer></script>
     </body>
 </html>

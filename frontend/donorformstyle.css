@@ -17,6 +17,7 @@ body{
 .container {
     /* border-radius: 5px; */
     /* background-color: #f2f2f2; */
+    display: block;
     padding: 40px;
     margin: auto;
     width:50%
@@ -26,6 +27,9 @@ body{
     float: left;
     width: 50%;
     margin-top: 6px;
+    padding-top:6px;
+    padding-bottom: 6px;
+    /* margin:10px; */
   }
   
   .col-75 {
@@ -33,6 +37,10 @@ body{
     right:0px;
     width: 50%;
     margin-top: 6px;
+  }
+
+  ::placeholder{
+      color: #e9d8a6;
   }
 
   select,input{
@@ -44,9 +52,13 @@ body{
       font-size: large;
   }
 
-  label{
-      padding:20px;
+  input:focus,select:focus {
+    outline: none;
   }
+
+  .invalid {
+    border: 3px solid orange;
+    }
 
   button{
       margin:50px;
@@ -59,13 +71,17 @@ body{
         font-size:x-large;
   }
 
+  .sidenote{
+      font-size: small;
+  }
+
   @media screen and (max-width: 1250px) {
     .col-25, .col-75, input[type=submit] {
       width: 100%;
     }
   }
 
-  .footer{
+.footer{
     bottom:0;
     font-size: medium;
     font-family: 'Trebuchet MS';
