@@ -7,6 +7,47 @@ let DATABASE2 = {
     // phonenumber : otp
 }
 
+let DATABASE3 ={
+    // phoneNumber : donateStatus
+}
+
+let DATABASE4 ={
+    // phoneNumber : requestStatus
+}
+
+let DATABASE5 ={
+    // for DONOR
+    // phoneNumber : { name : "somein" , age : "123" , etc......}
+}
+
+let DATABASE6 ={
+    // for DONOR
+    // phoneNumber : { name : "somein" , age : "123" , etc......}
+}
+
+function apiKeyVerify(key){
+    for(let [ph,token] of Object.entries(DATABASE))
+    {
+        if(key==token)
+        return ph;
+    }
+    return false;
+}
+
+function getDonateStatus(pn){
+    if(pn in DATABASE3)
+    return DATABASE3[pn];
+    DATABASE3[pn]=false;
+    return DATABASE3[pn];
+}
+
+function getRequestStatus(pn){
+    if(pn in DATABASE4)
+    return DATABASE4[pn];
+    DATABASE4[pn]=false;
+    return DATABASE4[pn];
+}
+
 function createNewOTP(pn) {
     let OTP = "", len = 6;
     for (let i = 0; i < len; i++)
@@ -102,4 +143,4 @@ function validDonorCount(data) {
     }).length;
 }
 
-module.exports = { isValidPhone, phoneToToken, createNewOTP, checkOTP, createNewApiToken, validDonorCount }
+module.exports = { isValidPhone, phoneToToken, createNewOTP, checkOTP, createNewApiToken, validDonorCount , apiKeyVerify, getDonateStatus,getRequestStatus};
