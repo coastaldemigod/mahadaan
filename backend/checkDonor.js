@@ -1,6 +1,7 @@
 const { IncomingMessage, ServerResponse } = require('http');
 const {getParams} = require('./getParams');
-// checkDonor?bloodgroup=999&country=india&state=up&city=agra
+const {validDonorCount} = require('./database');
+const fetch = require('node-fetch');
 /**
  * @param {IncomingMessage} req
  * @param {ServerResponse} res
@@ -59,22 +60,21 @@ function checkDonorAPI(req, res){
     const url=decodeURI(req.url);
     // console.log(url);
     const data = getParams(url,['blood','country','state','city']);
-    let bad=0;
+
     if(bloodGroups.includes(data.blood) && (checkCountry(data.country) && checkState(data.state,data.country) && checkCity(data.city,data.state)))
     {
         const fdata=validDonorCount(data);
-        
+        console.log(fdata);
+        let resulJSON = `{"STATUS":"ok", "MESSAGE": "working/checkDonor" , "DATA":"${fdata}"}`;
+        res.writeHead(200, { "content-type": "application/json" });
+        res.end(resulJSON);
     }
-        
-    // let resulJSON = "{STATUS:'ok', MESSAGE: 'Invalid Request'}"
-    // res.writeHead(200, { "content-type": "application/json" });
-    // res.end(resulJSON);
-    //logic
-    let resulJSON = '{"STATUS":"ok", "MESSAGE": "working/checkDonor"}';
-
-    res.writeHead(200, { "content-type": "application/json" });
-    res.end(resulJSON);
-
+    else
+    {
+        let resulJSON = "{STATUS:'ok', MESSAGE: 'Invalid Request'}"
+        res.writeHead(200, { "content-type": "application/json" });
+        res.end(resulJSON);
+    }
 }
 
 module.exports = {

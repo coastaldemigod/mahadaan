@@ -98,5 +98,9 @@ function showDonor()
     };
     let url=encodeURI(`http://localhost:5000/checkDonor?blood=${blood}&country=${country}&state=${state}&city=${city}`);
     // console.log(url);
-    fetch(url).then(e=>e.json()).then(console.table);
+    fetch(url)
+    .then(e=>e.json())
+    .then(dt=>{
+        alert(`There is/are ${dt.DATA} donors available who can donate blood to you.`);
+    });
 }

@@ -43,11 +43,11 @@ const donordata=[
         "gender":"male",
         "email":"demo@demo.demo",
         "phone":"9876543210",
-        "blood":"A+",
+        "blood":"B+",
         "cause":"diaorhea",
         "country":"India",
-        "state":"uttar pradesh",
-        "city":"agra",
+        "state":"Uttar pradesh",
+        "city":"Agra",
         "key":"someRandomHashKey"
     },
     {
@@ -59,8 +59,8 @@ const donordata=[
         "blood":"A+",
         "cause":"diaorhea",
         "country":"India",
-        "state":"uttar pradesh",
-        "city":"agra",
+        "state":"Uttar Pradesh",
+        "city":"Agra",
         "key":"someRandomHashKey"
     },
     {
@@ -79,9 +79,21 @@ const donordata=[
 ];
 
 function validDonorCount(data){
-    return donordata.filter(()=>{
-        
+    return donordata.filter((dt)=>{
+        let bo=1;
+        for(let [key,value] of Object.entries(data))
+        {
+            if(dt[key]!=value)
+            {
+                bo=0;
+                break;
+            }
+        }
+        if(bo==1)
+        return true;
+        else
+        return false;
     }).length;
 }
 
-module.exports = { isValidPhone, phoneToToken, createNewOTP }
+module.exports = { isValidPhone, phoneToToken, createNewOTP ,validDonorCount}
