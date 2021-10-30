@@ -1,0 +1,45 @@
+/* color pallete used : https://coolors.co/001219-005f73-0a9396-94d2bd-e9d8a6-ee9b00-ca6702-bb3e03-ae2012-9b2226*/
+
+body{
+    /* background-color: #0a9396; */
+    background-image: url("./wallpaper.png");
+}
+
+.title{
+    font-family: Tahoma;
+    margin: 5%;
+    text-align: center;
+    font-size: 100px;
+    color:#ee9b00;
+}
+
+.mainbody{
+    margin-top: 150px;
+    display: flex;
+    font-size: x-large;
+    font-family: 'Trebuchet MS';/*, 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;*/
+    
+}
+
+.box1{
+    
+    padding-top: 50px;
+    padding-bottom: 50px;
+    margin: auto;
+    display: block;
+    background-color: #0a9396;
+    width: 25%;
+    text-align: center;
+    text-decoration:none;
+    border-radius: 50px;
+    color:#e9d8a6;
+}
+
+.footer{
+    bottom:0;
+    /* display: flex; */
+    position:absolute;
+    text-align: center;
+    color: #94d2bd;
+    /* width:100%; */
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./checkstyle.css">
+    </head>
+    <body>
+        
+        <div class="heading">
+            Enter details for blood requirement
+        </div>
+
+        <div class="container">
+            <form action="API" method="GET">
+                <div class="row">
+                    <div class="col-25">
+                        <label>Blood Group</label>
+                    </div>
+                    <div class="col-75">
+                        <select id="blood" name="blood">
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+                            <option value="O+">O+</option>
+                            <option value="O-">O-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label>Country</label>
+                    </div>
+                    <div class="col-75">
+                        <select id="country" name="country" onchange="setState()"></select>
+                    </div>
+                </div>
+            <div class="row">    
+                <div class="col-25">
+                <label>State</label></div>
+                <div class="col-75">
+                <select id="state" name="state" onchange="setCity()"></select>
+            </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                <label>city</label>
+            </div>
+            <div class="col-75">
+                <select id="city" name="city"></select>
+            </div>
+            </div>
+            <div class="row">
+                <button>Check for Available Donors</button>
+            </div>
+            </form>
+        </div>
+        <script src="checkapp.js" async defer></script>
+    </body>
+</html>
