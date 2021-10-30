@@ -8,8 +8,8 @@ body{
 .title{
     font-family: Tahoma;
     margin: 5%;
-    text-align: center;
-    font-size: 100px;
+    /* text-align: center; */
+    font-size: 60px;
     color:#ee9b00;
 }
 
