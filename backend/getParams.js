@@ -11,7 +11,7 @@ function getParams(url, paramList) {
     for (let i of paramList) result[i] = null
 
     url = url.split('?')
-    if (url.length == 1)
+    if (url.length === 1)
         return result
     else url = url[1]
 

@@ -1,3 +1,5 @@
+const crypt = require('crypto');
+
 let DATABASE = {
     // phoneNumber : ApiToken
     '969696': 'AFjdJdsafH3las145823902afd'
@@ -11,12 +13,19 @@ function createNewOTP(pn) {
     for (let i = 0; i < len; i++) 
         OTP += Math.floor((Math.random() * 100) % 10);
     DATABASE2[pn] = OTP;
-
-    console.log(DATABASE2)
+    // console.log(DATABASE2)
+}
+function checkOTP(pn, otp){
+    return DATABASE2[pn] === otp;
 }
 
 function isValidPhone(pn) {
-    return DATABASE[pn] != undefined;
+    return DATABASE[pn] !== undefined;
+}
+
+function createNewApiToken(pn){
+    let hash = crypt.createHash('md5').update(pn + new Date()).digest('hex');
+    DATABASE[pn] = hash
 }
 
 function phoneToToken(pn) {
@@ -24,4 +33,4 @@ function phoneToToken(pn) {
 }
 
 
-module.exports = { isValidPhone, phoneToToken, createNewOTP }
+module.exports = { isValidPhone, phoneToToken, createNewOTP, checkOTP, createNewApiToken}

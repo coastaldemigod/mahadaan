@@ -17,7 +17,7 @@ function loginAPI(req, res) {
     phoneNum = sanitizePhone(phoneNum)
 
     let STATUS = '', MESSAGE = '';
-
+    
     // logic
     if (phoneNum == null) {
         STATUS = 'failed'
