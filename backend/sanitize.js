@@ -6,7 +6,7 @@
 function sanitizePhone(pn) {
     pn = String(pn)
     const phonereg = /^\d{10}$/;
-    return phonereg.test(pn) ? ph : null;
+    return phonereg.test(pn) ? pn : null;
 }
 
 module.exports = { sanitizePhone }
