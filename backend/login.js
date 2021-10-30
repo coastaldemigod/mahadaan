@@ -1,6 +1,5 @@
 const { IncomingMessage, ServerResponse } = require('http');
 const { getParams } = require('./getParams');
-const { isValidPhone } = require('./database');
 const { sanitizePhone } = require('./sanitize');
 
 // login?phonenumber=99898989898
@@ -13,22 +12,19 @@ function loginAPI(req, res) {
 
     // sanitize params 
     let phoneNum = getParams(req.url, ['phonenumber'])['phonenumber']
+    phoneNum = sanitizePhone(phoneNum)
 
     let STATUS = '', MESSAGE = '';
-    
+
     // logic
     if (phoneNum == null) {
         STATUS = 'failed'
         MESSAGE = 'Bad Request'
     }
-    else if (!isValidPhone(phoneNum)) {
-        STATUS = 'failed'
-        MESSAGE = 'Invalid Phone Number'
-    }
     else {
         STATUS = 'ok'
         MESSAGE = 'Login Attemp Succesfull/ Otp Sent to Mobile'
-        // send otp 
+        // create new OTP and send it to user
     }
 
     let resulJSON = `{"STATUS" : "${STATUS}", "MESSAGE": "${MESSAGE}"}`
