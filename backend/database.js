@@ -53,7 +53,7 @@ function createNewOTP(pn) {
     for (let i = 0; i < len; i++)
         OTP += Math.floor((Math.random() * 100) % 10);
     DATABASE2[pn] = OTP;
-    // console.log(DATABASE2)
+    console.log(DATABASE2)
 }
 function checkOTP(pn, otp) {
     return DATABASE2[pn] === otp;

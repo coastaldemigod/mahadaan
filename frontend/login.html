@@ -1,17 +1,28 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="login.css">
-    </head>
-    <body>
-            <form action="API/OTP" method="POST">
-                <input type="text" name="phone">
-            </form>
-        <script src="login.js" async defer></script>
-    </body>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+    <fieldset>
+        <legend>Login Page</legend>
+        <label for="phone">Phone Number</label>
+        <input type="number" min="1000000000" max="9999999999" id="phone">
+        <input type="button" onclick="doSomething()" value="Login / SignUp" id="phoneBtn">
+        <p id='loginStatus'></p>
+        <label for="phone">Enter Otp</label>
+        <input type="number" min="0" max="999999" id="otp" disabled>
+        <input type="button" onclick="doAgain()" value="Login / SignUp" id = "otpBtn" disabled>
+        <p id='otpStatus'></p>
+    </fieldset>
+    <script src="login.js" async defer></script>
+</body>
+
 </html>
