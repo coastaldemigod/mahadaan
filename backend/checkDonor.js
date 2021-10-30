@@ -11,7 +11,7 @@ const bloodGroups=['A+','A-','B+','B-','O+','O-','AB+','AB-'];
 const auth_token="Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfZW1haWwiOiJjb2FzdGFsZGVtaWdvZEBnbWFpbC5jb20iLCJhcGlfdG9rZW4iOiJxYjJfbHVxTWo3YWgxMmNuQkFodV9Gb2FTTmFTSFVkY09sX043bUR4bTVwUHRyYnRMZC1kLXpfNklmeklZT1ZpWDlVIn0sImV4cCI6MTYzNTYyMTIwMX0.MUoXUzwaNVBt5iJNbySf_qv4Li8r_AtZRREyMtkI-A8";
 let countries_url="https://www.universal-tutorial.com/api/countries/";
 let states_url="https://www.universal-tutorial.com/api/states/";
-let city_url="https://www.universal-tutorial.com/api/cities/"
+let city_url="https://www.universal-tutorial.com/api/cities/";
 
 const param={
     headers:{
@@ -56,13 +56,14 @@ async function checkCity(city,state){
 function checkDonorAPI(req, res){
 
     // sanitize params
-    console.log(req.url);
-    console.log(getParams(req.url,['blood','country','state','city']));
-    // const data=sanitize(req.url);
+    const url=decodeURI(req.url);
+    // console.log(url);
+    const data = getParams(url,['blood','country','state','city']);
     let bad=0;
-    // if(bloodGroups.includes(data.blood) && (checkCountry(data.country) && checkState(data.state,data.country) && checkCity(data.city,data.state)))
+    if(bloodGroups.includes(data.blood) && (checkCountry(data.country) && checkState(data.state,data.country) && checkCity(data.city,data.state)))
     {
-
+        const fdata=validDonorCount(data);
+        
     }
         
     // let resulJSON = "{STATUS:'ok', MESSAGE: 'Invalid Request'}"
