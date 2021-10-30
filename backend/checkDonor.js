@@ -68,7 +68,7 @@ function checkDonorAPI(req, res){
     // res.writeHead(200, { "content-type": "application/json" });
     // res.end(resulJSON);
     //logic
-    let resulJSON = "{'STATUS':'ok', 'MESSAGE': 'working/checkDonor'}"
+    let resulJSON = '{"STATUS":"ok", "MESSAGE": "working/checkDonor"}';
 
     res.writeHead(200, { "content-type": "application/json" });
     res.end(resulJSON);
