@@ -2,6 +2,8 @@ const crypt = require('crypto');
 
 let DATABASE = {
     // phoneNumber : ApiToken
+    1234:"somerandomkey",
+    2345:"somerandomkey"
 }
 let DATABASE2 = {
     // phonenumber : otp
@@ -9,6 +11,7 @@ let DATABASE2 = {
 
 let DATABASE3 ={
     // phoneNumber : donateStatus
+    1234:"true"
 }
 
 let DATABASE4 ={
@@ -21,8 +24,21 @@ let DATABASE5 ={
 }
 
 let DATABASE6 ={
-    // for DONOR
+    // for Request
     // phoneNumber : { name : "somein" , age : "123" , etc......}
+    1234 : {
+        "name": "noob malhotra",
+        "age": "28",
+        "gender": "male",
+        "email": "demo@demo.demo",
+        "phone": "9876543210",
+        "blood": "A+",
+        "cause": "diaorhea",
+        "country": "India",
+        "state": "uttar pradesh",
+        "city": "agra",
+        "key": "someRandomHashKey"
+    }
 }
 
 function apiKeyVerify(key){
@@ -46,6 +62,22 @@ function getRequestStatus(pn){
     return DATABASE4[pn];
     DATABASE4[pn]=false;
     return DATABASE4[pn];
+}
+
+function getDonateDetail(pn){
+    return DATABASE5[pn];
+}
+
+function getRequestDetail(pn){
+    return DATABASE6[pn];
+}
+
+function setDonateDetail(pn,data){
+    DATABASE5[pn]=data;
+    // console.log(DATABASE5[pn]);
+}
+function setRequestDetail(pm,data){
+    DATABASE6[pm]=data;
 }
 
 function createNewOTP(pn) {
@@ -143,4 +175,4 @@ function validDonorCount(data) {
     }).length;
 }
 
-module.exports = { isValidPhone, phoneToToken, createNewOTP, checkOTP, createNewApiToken, validDonorCount , apiKeyVerify, getDonateStatus,getRequestStatus};
+module.exports = { isValidPhone, phoneToToken, createNewOTP, checkOTP, createNewApiToken, validDonorCount , apiKeyVerify, getDonateStatus,getRequestStatus,getRequestDetail,getDonateDetail,setDonateDetail,setRequestDetail};
