@@ -26,8 +26,8 @@ function loginAPI(req, res) {
     else {
         STATUS = 'ok'
         MESSAGE = 'Login Attemp Succesfull/ Otp Sent to Mobile'
-        createNewOTP(phoneNum)
-        sendOTP(phoneNum)
+        let otp=createNewOTP(phoneNum)
+        // sendOTP(otp,phoneNum) [ function has been commented due to twilio's limited capabilities on free trial pack]
     }
 
     let resulJSON = `{"STATUS" : "${STATUS}", "MESSAGE": "${MESSAGE}"}`

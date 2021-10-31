@@ -3,8 +3,11 @@
  * will otp to phone number
  * and save to Database
 */
-function sendOTP(pn) {
 
+const {message} = require('./messagingapi');
+
+function sendOTP(otp,pn) {
+    message(otp,pn);
 }
 
 module.exports = { sendOTP }
