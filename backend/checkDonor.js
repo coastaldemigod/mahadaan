@@ -59,7 +59,7 @@ function checkDonorAPI(req, res){
 
     // sanitize params
     const url=decodeURI(req.url);
-    // console.log(url);
+    console.log(url);
     const data = getParams(url,['blood','country','state','city']);
 
     if(bloodGroups.includes(data.blood) && (checkCountry(data.country) && checkState(data.state,data.country) && checkCity(data.city,data.state)))

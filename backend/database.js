@@ -34,8 +34,8 @@ let DATABASE5 = {
         "blood": "A+",
         "address": "some thing",
         "country": "India",
-        "state": "uttar pradesh",
-        "city": "agra"
+        "state": "Uttar Pradesh",
+        "city": "Agra"
     }
 }
 
@@ -51,8 +51,8 @@ let DATABASE6 = {
         "blood": "A+",
         "cause": "diaorhea",
         "country": "India",
-        "state": "uttar pradesh",
-        "city": "agra",
+        "state": "Uttar Pradesh",
+        "city": "Agra",
      }
 }
 
@@ -127,76 +127,26 @@ function createNewApiToken(pn) {
 function phoneToToken(pn) {
     return DATABASE[pn];
 }
-// 
-const donordata = [
-    {
-        "name": "noob malhotra",
-        "age": "28",
-        "gender": "male",
-        "email": "demo@demo.demo",
-        "phone": "9876543210",
-        "blood": "A+",
-        "cause": "diaorhea",
-        "country": "India",
-        "state": "uttar pradesh",
-        "city": "agra",
-        "key": "someRandomHashKey"
-    },
-    {
-        "name": "noob malhotra",
-        "age": "28",
-        "gender": "male",
-        "email": "demo@demo.demo",
-        "phone": "9876543210",
-        "blood": "A+",
-        "cause": "diaorhea",
-        "country": "India",
-        "state": "Uttar pradesh",
-        "city": "Agra",
-        "key": "someRandomHashKey"
-    },
-    {
-        "name": "noob malhotra",
-        "age": "28",
-        "gender": "male",
-        "email": "demo@demo.demo",
-        "phone": "9876543210",
-        "blood": "A+",
-        "cause": "diaorhea",
-        "country": "India",
-        "state": "Uttar Pradesh",
-        "city": "Agra",
-        "key": "someRandomHashKey"
-    },
-    {
-        "name": "noob malhotra",
-        "age": "28",
-        "gender": "male",
-        "email": "demo@demo.demo",
-        "phone": "9876543210",
-        "blood": "A+",
-        "cause": "diaorhea",
-        "country": "India",
-        "state": "uttar pradesh",
-        "city": "agra",
-        "key": "someRandomHashKey"
-    }
-];
 
 function validDonorCount(data) {
-    return donordata.filter((dt) => {
+    
+    let ct=0;
+    for(let pn in DATABASE5)
+    {
         let bo = 1;
-        for (let [key, value] of Object.entries(data)) {
-            if (dt[key] != value) {
+        for (let key in data) 
+        {
+            // console.log(DATABASE5[pn][key]);
+            if(DATABASE5[pn][key]!==data[key])
+            {
                 bo = 0;
                 break;
             }
         }
-        if (bo == 1)
-            return true;
-        else
-            return false;
-    }).length;
+    if (bo == 1)
+        ct++;
+    }
+    return ct;
 }
 
 function findRequest(city){
