@@ -4,10 +4,10 @@
  * and save to Database
 */
 
-const {message} = require('./messagingapi');
+// const {message} = require('./messagingapi');
 
 function sendOTP(otp,pn) {
-    message(otp,pn);
+    // message(otp,pn);
 }
 
 module.exports = { sendOTP }
