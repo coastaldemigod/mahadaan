@@ -13,10 +13,11 @@ const { __esModule } = require('node-fetch');
 function accept(req,res){
     let url = req.url;
     let params = getParams(url, ['apikey', 'donphone']);
-    let key = params.apikey, recphone = params.donphone;
+    let key = params.apikey, donphone = params.donphone;
     let STATUS = '', MESSAGE = '', DATA = '';
-
-    if(apiKeyVerify(key)==false || donorExist(donphone)==false){
+    console.log(apiKeyVerify(key),donorExist(donphone));
+    if(apiKeyVerify(key)==false || donorExist(donphone)==false)
+    {
         STATUS="failed";
         MESSAGE="Bad Request"
     }

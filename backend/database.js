@@ -4,7 +4,8 @@ let DATABASE = {
     // phoneNumber : ApiToken
     1234567890: "somerandomkey",
     2345678901: "somerandomkey",
-    4567890123: "0787d6cc1412c83ea12f7f97adcc7338"
+    4567890123: "0787d6cc1412c83ea12f7f97adcc7338",
+    2345678901: "0787d6cc1412c83ea12f7f97adcc7338"
 }
 let DATABASE2 = {
     // phonenumber : otp
@@ -93,7 +94,8 @@ let DATABASE6 = {
 
 let DATABASE8 ={
     // donor phonenumber : receipent phonenumber
-    2345678901:4567890123
+    2345678901:4567890123,
+    4567890123:2345678901
 }
 
 let DATABASE7 = {
@@ -126,6 +128,7 @@ function requestExist(pn){
 }
 
 function donorExist(pn){
+    console.log(DATABASE5.hasOwnProperty(pn));
     return DATABASE5.hasOwnProperty(pn);
 }
 

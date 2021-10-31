@@ -26,7 +26,7 @@ function apiHandler(req, res) {
     else if (apiURL.startsWith('/transferData')) transferData(req, res);
     else if (apiURL.startsWith('/dashBoardDetail')) dashBoardDetail(req, res);
     else if (apiURL.startsWith('/donate')) donate(req, res);
-    else if (apiURL.startsWith('/accept')) donate(req, res);
+    else if (apiURL.startsWith('/accept')) accept(req, res);
     else res.end('{STATUS: "failed", MESSAGE: "Bad Request"}');
 
 }
