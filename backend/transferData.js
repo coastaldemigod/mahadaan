@@ -35,17 +35,6 @@ function transferData(req, res) {
             MESSAGE = "request status sent";
             DATA = getRequestStatus(apiKeyVerify(key)).toString();
         }
-<<<<<<< HEAD
-        else if (what == 'donateDetail') {
-            STATUS = "ok";
-            MESSAGE = "donate details sent";
-            DATA = JSON.stringify(getDonateDetail(apiKeyVerify(key)));
-        }
-        else if (what == 'RequestDetail') {
-            STATUS = "ok";
-            MESSAGE = "request details sent";
-            DATA = JSON.stringify(getRequestDetail(apiKeyVerify(key)));
-=======
         else if(what=='donateDetail' && getDonateDetail(apiKeyVerify(key))!=false)
         {
             STATUS="ok";
@@ -57,7 +46,6 @@ function transferData(req, res) {
             STATUS="ok";
             MESSAGE="request details sent";
             DATA=JSON.stringify(getRequestDetail(apiKeyVerify(key))).replace(/\"/g,"\'");
->>>>>>> cf3ab286216aead3754e5ee716622831db826ca9
         }
         else {
             STATUS = "FAILED";
@@ -69,21 +57,6 @@ function transferData(req, res) {
         if (what == 'donateDetail') {
             let data = getParams(url, ['whatData']);
             // console.log(data.whatData);
-<<<<<<< HEAD
-            let phn = apiKeyVerify(key);
-            setDonateDetail(phn, data.whatData);
-            STATUS = "ok";
-            MESSAGE = "donate details saved";
-            DATA = data.whatData;
-        }
-        else if (what == 'RequestDetail') {
-            let data = getParams(url, ['whatData']);
-            let phn = apiKeyVerify(key);
-            setRequestDetail(phn, data.whatData);
-            STATUS = "ok";
-            MESSAGE = "request details saved";
-            DATA = data.whatData;
-=======
             let phn=apiKeyVerify(key);
             setDonateDetail(phn,JSON.parse(data.whatData));
             STATUS="ok";
@@ -99,7 +72,6 @@ function transferData(req, res) {
             STATUS="ok";
             MESSAGE="request details saved";
             DATA=data.whatData.replace(/\"/g,"\'");
->>>>>>> cf3ab286216aead3754e5ee716622831db826ca9
         }
         else {
             STATUS = "FAILED";

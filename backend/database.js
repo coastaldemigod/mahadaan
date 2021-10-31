@@ -25,7 +25,7 @@ let DATABASE4 = {
 let DATABASE5 = {
     // for DONOR
     // phoneNumber : { name : "somein" , age : "123" , etc......}
-    4567 : {
+    4567890123 : {
         "name": "noob malhotra",
         "age": "28",
         "gender": "male",
@@ -53,8 +53,7 @@ let DATABASE6 = {
         "country": "India",
         "state": "uttar pradesh",
         "city": "agra",
-        "key": "someRandomHashKey"
-    }
+     }
 }
 
 let DATABASE7 = {
@@ -128,7 +127,7 @@ function createNewApiToken(pn) {
 function phoneToToken(pn) {
     return DATABASE[pn];
 }
-
+// 
 const donordata = [
     {
         "name": "noob malhotra",
@@ -200,12 +199,24 @@ function validDonorCount(data) {
     }).length;
 }
 
+function findRequest(city){
+    let resuult = []
+    for (let pn in DATABASE6){
+        let detail = DATABASE6[pn]
+        if (detail.city === city){
+            resuult.push(detail)
+        }
+    }
+    return resuult;
+}
+
 module.exports = {
     isValidPhone,
     phoneToToken,
     createNewOTP,
     checkOTP,
     createNewApiToken,
+    findRequest,
     validDonorCount,
     apiKeyVerify,
     getDonateStatus,
@@ -215,3 +226,8 @@ module.exports = {
     setDonateDetail,
     setRequestDetail
 };
+
+
+
+// Unicorn Easter Egg
+// 🦄🦄🦄🦄🦄🦄
