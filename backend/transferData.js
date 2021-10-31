@@ -39,17 +39,17 @@ function transferData(req,res){
             MESSAGE="request status sent";
             DATA=getRequestStatus(apiKeyVerify(key)).toString();
         }
-        else if(what=='donateDetail')
+        else if(what=='donateDetail' && getDonateDetail(apiKeyVerify(key))!=false)
         {
             STATUS="ok";
             MESSAGE="donate details sent";
-            DATA=JSON.stringify(getDonateDetail(apiKeyVerify(key)));
+            DATA=JSON.stringify(getDonateDetail(apiKeyVerify(key))).replace(/\"/g,"\'");
         }
-        else if(what=='RequestDetail')
+        else if(what=='RequestDetail'&& getRequestDetail(apiKeyVerify(key))!=false)
         {
             STATUS="ok";
             MESSAGE="request details sent";
-            DATA=JSON.stringify(getRequestDetail(apiKeyVerify(key)));
+            DATA=JSON.stringify(getRequestDetail(apiKeyVerify(key))).replace(/\"/g,"\'");
         }
         else
         {
@@ -65,19 +65,20 @@ function transferData(req,res){
             let data=getParams(url,['whatData']);
             // console.log(data.whatData);
             let phn=apiKeyVerify(key);
-            setDonateDetail(phn,data.whatData);
+            setDonateDetail(phn,JSON.parse(data.whatData));
             STATUS="ok";
             MESSAGE="donate details saved";
-            DATA=data.whatData;
+            DATA=data.whatData.replace(/\"/g,"\'");
+            // console.log(DATA);
         }
         else if(what=='RequestDetail')
         {
             let data=getParams(url,['whatData']);
             let phn=apiKeyVerify(key);
-            setRequestDetail(phn,data.whatData);
+            setRequestDetail(phn,JSON.parse(data.whatData));
             STATUS="ok";
             MESSAGE="request details saved";
-            DATA=data.whatData;
+            DATA=data.whatData.replace(/\"/g,"\'");
         }
         else
         {
@@ -94,6 +95,7 @@ function transferData(req,res){
     }
 
     let resulJSON = `{"STATUS" : "${STATUS}", "MESSAGE": "${MESSAGE}", "DATA" : "${DATA}" }`
+    console.log([resulJSON]);
     res.writeHead(200, { "content-type": "application/json" });
     res.end(resulJSON);
 }
