@@ -2,7 +2,8 @@ const { IncomingMessage, ServerResponse } = require('http');
 const { checkDonorAPI } = require('./checkDonor');
 const { loginAPI } = require('./login');
 const { otpVerification } = require('./otpVerification');
-const {transferData} = require('./transferData');
+const { transferData } = require('./transferData');
+const { dashBoardDetail } = require('./dashBoardDetail');
 
 /**
  * @param {IncomingMessage} req
@@ -20,7 +21,9 @@ function apiHandler(req, res) {
     if (apiURL.startsWith('/checkDonor')) checkDonorAPI(req, res);
     else if (apiURL.startsWith('/login')) loginAPI(req, res);
     else if (apiURL.startsWith('/otpVerification')) otpVerification(req, res);
-    else if (apiURL.startsWith('/transferData')) transferData(req,res);
+    else if (apiURL.startsWith('/transferData')) transferData(req, res);
+    else if (apiURL.startsWith('/dashBoardDetail')) dashBoardDetail(req, res);
+    
     else res.end('{STATUS: "failed", MESSAGE: "Bad Request"}');
 
 }

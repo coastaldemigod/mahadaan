@@ -2,32 +2,32 @@ const crypt = require('crypto');
 
 let DATABASE = {
     // phoneNumber : ApiToken
-    1234:"somerandomkey",
-    2345:"somerandomkey",
-    4567:"0787d6cc1412c83ea12f7f97adcc7338"
+    1234567890: "somerandomkey",
+    2345678901: "somerandomkey",
+    4567890123: "0787d6cc1412c83ea12f7f97adcc7338"
 }
 let DATABASE2 = {
     // phonenumber : otp
 }
 
-let DATABASE3 ={
+let DATABASE3 = {
     // phoneNumber : donateStatus
-    1234:"true"
+    1234: "true"
 }
 
-let DATABASE4 ={
+let DATABASE4 = {
     // phoneNumber : requestStatus
 }
 
-let DATABASE5 ={
+let DATABASE5 = {
     // for DONOR
     // phoneNumber : { name : "somein" , age : "123" , etc......}
 }
 
-let DATABASE6 ={
+let DATABASE6 = {
     // for Request
     // phoneNumber : { name : "somein" , age : "123" , etc......}
-    1234 : {
+    1234: {
         "name": "noob malhotra",
         "age": "28",
         "gender": "male",
@@ -42,43 +42,47 @@ let DATABASE6 ={
     }
 }
 
-function apiKeyVerify(key){
-    for(let [ph,token] of Object.entries(DATABASE))
-    {
-        if(key==token)
-        return ph;
+let DATABASE7 = {
+    // phone : uniqueID
+    1234567890: 13462244509
+}
+
+function apiKeyVerify(key) {
+    for (let [ph, token] of Object.entries(DATABASE)) {
+        if (key == token)
+            return ph;
     }
     return false;
 }
 
-function getDonateStatus(pn){
-    if(pn in DATABASE3)
-    return DATABASE3[pn];
-    DATABASE3[pn]=false;
+function getDonateStatus(pn) {
+    if (pn in DATABASE3)
+        return DATABASE3[pn];
+    DATABASE3[pn] = false;
     return DATABASE3[pn];
 }
 
-function getRequestStatus(pn){
-    if(pn in DATABASE4)
-    return DATABASE4[pn];
-    DATABASE4[pn]=false;
+function getRequestStatus(pn) {
+    if (pn in DATABASE4)
+        return DATABASE4[pn];
+    DATABASE4[pn] = false;
     return DATABASE4[pn];
 }
 
-function getDonateDetail(pn){
+function getDonateDetail(pn) {
     return DATABASE5[pn];
 }
 
-function getRequestDetail(pn){
+function getRequestDetail(pn) {
     return DATABASE6[pn];
 }
 
-function setDonateDetail(pn,data){
-    DATABASE5[pn]=data;
+function setDonateDetail(pn, data) {
+    DATABASE5[pn] = data;
     // console.log(DATABASE5[pn]);
 }
-function setRequestDetail(pm,data){
-    DATABASE6[pm]=data;
+function setRequestDetail(pm, data) {
+    DATABASE6[pm] = data;
 }
 
 function createNewOTP(pn) {
@@ -176,4 +180,18 @@ function validDonorCount(data) {
     }).length;
 }
 
-module.exports = { isValidPhone, phoneToToken, createNewOTP, checkOTP, createNewApiToken, validDonorCount , apiKeyVerify, getDonateStatus,getRequestStatus,getRequestDetail,getDonateDetail,setDonateDetail,setRequestDetail};
+module.exports = {
+    isValidPhone,
+    phoneToToken,
+    createNewOTP,
+    checkOTP,
+    createNewApiToken,
+    validDonorCount,
+    apiKeyVerify,
+    getDonateStatus,
+    getRequestStatus,
+    getRequestDetail,
+    getDonateDetail,
+    setDonateDetail,
+    setRequestDetail
+};
