@@ -68,14 +68,12 @@ async function setCity(){
         citydrop.innerHTML=html;
 }
 
-setCountry();
-
 const emailreg= /^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/;
 const phonereg=/^\d{10}$/;
 const agereg = /^\d{2}$/;
 
 const keys = document.querySelectorAll("input");
-console.log(keys);
+// console.log(keys);
 const age=keys[1];
 const email=keys[2];
 const phone=keys[3];
@@ -93,3 +91,67 @@ email.addEventListener('keyup',val=>{
 age.addEventListener('keyup',val=>{
     agereg.test(val.target.value) && val.target.value>=18 && val.target.value<=65 ? val.target.className="valid" : val.target.className="invalid";
 })
+
+async function makeRequest(url){
+    const res=await fetch(url);
+    return await res.json();
+}
+
+const apikey=localStorage.getItem("APIKEY");
+console.log(apikey);
+
+document.querySelector('form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    console.log(e.target);
+    let data=Object.fromEntries(formData.entries());
+    console.log(data);
+    data=JSON.stringify(data) // KNOWN BUG : blood group is not sent as wanted.
+    let url = `http://localhost:5000/transferData?apikey=${apikey}&mode=POST&what=donateDetail&whatData=${data}`;
+    const res = await makeRequest(url);
+    if(res.STATUS=='ok')
+    {
+        window.location.href  = window.location.origin + '/frontend/donordash.html'
+    }
+  });
+
+async function onloader(){
+    let url = `http://localhost:5000/transferData?apikey=${apikey}&mode=GET&what=donateDetail`;
+    const res= await makeRequest(url);
+    if(res.STATUS=='ok')
+    {
+        const form = document.getElementById('form_id');
+        const formData = new FormData(form);
+        let data=Object.fromEntries(formData.entries());
+        console.log(data);
+        // console.log(res.DATA);
+        let obj = JSON.parse(res.DATA.replace(/\'/g,"\""));
+        console.log(obj);
+        for( let [key,val] of Object.entries(obj)){
+
+            console.log(key,obj[key]);
+            document.getElementById(key).value=obj[key];
+        }
+        let opt = document.createElement('option');
+        opt.value = obj["country"];
+        opt.innerHTML = obj["country"];
+        document.getElementById("country").appendChild(opt);
+        opt = document.createElement('option');
+        opt.value = obj["state"];
+        opt.innerHTML = obj["state"];
+        document.getElementById("state").appendChild(opt);
+        opt = document.createElement('option');
+        opt.value = obj["city"];
+        opt.innerHTML = obj["city"];
+        document.getElementById("city").appendChild(opt);
+
+        // Known bug : country,state,city do not change after setting the values via the above method.
+
+    }
+    else
+    {
+        setCountry();
+    }
+}
+
+  window.onload=onloader;

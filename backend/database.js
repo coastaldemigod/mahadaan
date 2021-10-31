@@ -12,16 +12,31 @@ let DATABASE2 = {
 
 let DATABASE3 = {
     // phoneNumber : donateStatus
-    1234: "true"
+    1234:"true",
+    4567:"true"
 }
 
 let DATABASE4 = {
     // phoneNumber : requestStatus
+    1234:"true",
+    4567:"false"
 }
 
 let DATABASE5 = {
     // for DONOR
     // phoneNumber : { name : "somein" , age : "123" , etc......}
+    4567 : {
+        "name": "noob malhotra",
+        "age": "28",
+        "gender": "male",
+        "email": "demo@demo.demo",
+        "phone": "9876543210",
+        "blood": "A+",
+        "address": "some thing",
+        "country": "India",
+        "state": "uttar pradesh",
+        "city": "agra"
+    }
 }
 
 let DATABASE6 = {
@@ -52,6 +67,7 @@ function apiKeyVerify(key) {
         if (key == token)
             return ph;
     }
+    console.log("f2");
     return false;
 }
 
@@ -69,12 +85,16 @@ function getRequestStatus(pn) {
     return DATABASE4[pn];
 }
 
-function getDonateDetail(pn) {
+function getDonateDetail(pn){
+    if(pn in DATABASE5)
     return DATABASE5[pn];
+    return false;
 }
 
-function getRequestDetail(pn) {
+function getRequestDetail(pn){
+    if(pn in DATABASE6)
     return DATABASE6[pn];
+    return false;
 }
 
 function setDonateDetail(pn, data) {

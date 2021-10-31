@@ -22,7 +22,8 @@ async function checkDonateStatus(){
 
     if(res.STATUS=='ok')
     {
-        if(res.DATA==true)
+        // console.log(res);
+        if(res.DATA=='true')
         {
             window.location.href  = window.location.origin + '/frontend/donordash.html'
         }
@@ -44,7 +45,7 @@ async function checkRequestStatus(){
 
     if(res.STATUS=='ok')
     {
-        if(res.DATA==true)
+        if(res.DATA=='true')
         {
             window.location.href  = window.location.origin + '/frontend/requiredash.html'
         }
