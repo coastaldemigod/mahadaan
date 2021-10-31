@@ -18,6 +18,8 @@ let DATABASE3 ={
 
 let DATABASE4 ={
     // phoneNumber : requestStatus
+    1234:"true",
+    4567:"false"
 }
 
 let DATABASE5 ={
