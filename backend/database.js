@@ -12,14 +12,13 @@ let DATABASE2 = {
 
 let DATABASE3 = {
     // phoneNumber : donateStatus
-    1234:"true",
-    4567:"true"
+    4567890123:"true"
 }
 
 let DATABASE4 = {
     // phoneNumber : requestStatus
-    1234:"true",
-    4567:"false"
+    2345678901:"true",
+    1234567890:"true"
 }
 
 let DATABASE5 = {
@@ -30,24 +29,19 @@ let DATABASE5 = {
         "age": "28",
         "gender": "male",
         "email": "demo@demo.demo",
-        "phone": "9876543210",
+        "phone": "4567890123",
         "blood": "A+",
         "address": "some thing",
         "country": "India",
         "state": "Uttar Pradesh",
         "city": "Agra"
-    }
-}
-
-let DATABASE6 = {
-    // for Request
-    // phoneNumber : { name : "somein" , age : "123" , etc......}
-    1234: {
-        "name": "noob malhotra",
+    },
+    2345678901: {
+        "name": "noobest malhotra",
         "age": "28",
         "gender": "male",
         "email": "demo@demo.demo",
-        "phone": "9876543210",
+        "phone": "2345678901",
         "blood": "A+",
         "cause": "diaorhea",
         "country": "India",
@@ -56,9 +50,55 @@ let DATABASE6 = {
      }
 }
 
+let DATABASE6 = {
+    // for Request
+    // phoneNumber : { name : "somein" , age : "123" , etc......}
+    2345678901: {
+        "name": "noobest malhotra",
+        "age": "28",
+        "gender": "male",
+        "email": "demo@demo.demo",
+        "phone": "2345678901",
+        "blood": "A+",
+        "cause": "diaorhea",
+        "country": "India",
+        "state": "Uttar Pradesh",
+        "city": "Agra",
+     },
+     1234567890: {
+        "name": "noobie malhotra",
+        "age": "24",
+        "gender": "male",
+        "email": "demoe@demo.demo",
+        "phone": "1234567890",
+        "blood": "B+",
+        "cause": "diaorhea",
+        "country": "India",
+        "state": "Uttar Pradesh",
+        "city": "Agra",
+     },
+     4567890123 : {
+        "name": "noob malhotra",
+        "age": "28",
+        "gender": "male",
+        "email": "demo@demo.demo",
+        "phone": "4567890123",
+        "blood": "A+",
+        "address": "some thing",
+        "country": "India",
+        "state": "Uttar Pradesh",
+        "city": "Agra"
+    }
+}
+
+let DATABASE8 ={
+    // donor phonenumber : receipent phonenumber
+    2345678901:4567890123
+}
+
 let DATABASE7 = {
     // phone : uniqueID
-    1234567890: 13462244509
+    // 1234567890: 13462244509
 }
 
 function apiKeyVerify(key) {
@@ -68,6 +108,42 @@ function apiKeyVerify(key) {
     }
     console.log("f2");
     return false;
+}
+
+function completeRequest(pn){
+    for(let don in DATABASE8){
+        if(DATABASE8[don]==pn)
+        delete DATABASE8[don];
+    }
+    for(let req in DATABASE6){
+        if(req==pn)
+        delete DATABASE6[req];
+    }
+}
+
+function requestExist(pn){
+    return DATABASE6.hasOwnProperty(pn);
+}
+
+function donorExist(pn){
+    return DATABASE5.hasOwnProperty(pn);
+}
+
+function setDonate(don,rec){
+    DATABASE8[don]=rec;
+}
+
+function getDonor(pn){
+    let result=[];
+    for(let don in DATABASE8)
+    {
+        console.log(DATABASE8[don],pn);
+        if(DATABASE8[don]==pn)
+        {
+            result.push(getDonateDetail(don));
+        }
+    }
+    return result;
 }
 
 function getDonateStatus(pn) {
@@ -174,7 +250,12 @@ module.exports = {
     getRequestDetail,
     getDonateDetail,
     setDonateDetail,
-    setRequestDetail
+    setRequestDetail,
+    requestExist,
+    setDonate,
+    getDonor,
+    donorExist,
+    completeRequest
 };
 
 

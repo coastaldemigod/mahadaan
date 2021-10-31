@@ -4,6 +4,8 @@ const { loginAPI } = require('./login');
 const { otpVerification } = require('./otpVerification');
 const { transferData } = require('./transferData');
 const { dashBoardDetail } = require('./dashBoardDetail');
+const {donate} = require('./donate');
+const {accept} = require('./accept');
 
 /**
  * @param {IncomingMessage} req
@@ -23,7 +25,8 @@ function apiHandler(req, res) {
     else if (apiURL.startsWith('/otpVerification')) otpVerification(req, res);
     else if (apiURL.startsWith('/transferData')) transferData(req, res);
     else if (apiURL.startsWith('/dashBoardDetail')) dashBoardDetail(req, res);
-    
+    else if (apiURL.startsWith('/donate')) donate(req, res);
+    else if (apiURL.startsWith('/accept')) donate(req, res);
     else res.end('{STATUS: "failed", MESSAGE: "Bad Request"}');
 
 }

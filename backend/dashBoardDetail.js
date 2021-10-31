@@ -1,6 +1,6 @@
 const { IncomingMessage, ServerResponse, get } = require('http');
 const { getParams } = require('./getParams');
-const { apiKeyVerify, findRequest, getDonateDetail } = require('./database')
+const { apiKeyVerify, findRequest, getDonateDetail, getDonor} = require('./database')
 
 /**
  * @param {IncomingMessage} req
@@ -26,11 +26,17 @@ function dashBoardDetail(req, res) {
         MESSAGE = 'Succesfull'
         if (what === 'donor') {
             // get donate details
-            let res = findRequest(getDonateDetail(phone).city);
-            DATA = JSON.stringify(res);
+            let res = findRequest(getDonateDetail(phone).city); 
+            // currently only city is being matched due to an error in parsing blood groups. [ To be resolved ]
+            DATA = JSON.stringify(res).replace(/\"/g,"\'");;
+            console.log(DATA);
         }
         else {
-
+             // get donate details
+             let res = getDonor(phone);
+             // currently only city is being matched due to an error in parsing blood groups. [ To be resolved ]
+             DATA = JSON.stringify(res).replace(/\"/g,"\'");;
+             console.log(DATA);
         }
     }
 
