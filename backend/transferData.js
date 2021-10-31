@@ -41,7 +41,7 @@ function transferData(req, res) {
             MESSAGE="donate details sent";
             DATA=JSON.stringify(getDonateDetail(apiKeyVerify(key))).replace(/\"/g,"\'");
         }
-        else if(what=='RequestDetail'&& getRequestDetail(apiKeyVerify(key))!=false)
+        else if(what=='requestDetail'&& getRequestDetail(apiKeyVerify(key))!=false)
         {
             STATUS="ok";
             MESSAGE="request details sent";
@@ -64,7 +64,7 @@ function transferData(req, res) {
             DATA=data.whatData.replace(/\"/g,"\'");
             // console.log(DATA);
         }
-        else if(what=='RequestDetail')
+        else if(what=='requestDetail')
         {
             let data=getParams(url,['whatData']);
             let phn=apiKeyVerify(key);

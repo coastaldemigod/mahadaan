@@ -74,3 +74,24 @@ else
     })
     space.innerHTML=html;
 }
+
+const apikey=localStorage.getItem("APIKEY");
+console.log(apikey);
+
+async function makeRequest(url){
+    const res=await fetch(url);
+    return await res.json();
+}
+
+async function setname(){
+    const nm=document.getElementById("name");
+    const url = `http://localhost:5000/transferData?apikey=${apikey}&mode=GET&what=requestDetail`;
+    const res=await makeRequest(url);
+    if(res.STATUS=='ok')
+    {
+        let obj = JSON.parse(res.DATA.replace(/\'/g,"\""));
+        nm.innerHTML=obj["name"];
+    }
+}
+
+setname();
